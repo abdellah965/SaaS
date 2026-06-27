@@ -1,0 +1,312 @@
+/* --- UNIFIED SETTINGS WORKSPACE --- */
+.unified-app-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background-color: transparent; /* Allows index.css cinematic background to show */
+  color: #FAFAFA;
+  font-family: 'Inter', -apple-system, system-ui, sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+.settings-loading-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.glow-spinner {
+  width: 32px;
+  height: 32px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-top-color: #EAB308;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* 1. NARROW GLOBAL SIDEBAR (Exactly matches Dashboard.css) */
+.global-sidebar {
+  width: 64px;
+  background-color: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  z-index: 50;
+}
+
+.sidebar-top, .sidebar-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.logo-box {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #EAB308, #D97706);
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 12px rgba(234, 179, 8, 0.3);
+}
+
+.nav-icon {
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  color: #52525B;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.nav-icon:hover { color: #FAFAFA; background: rgba(255, 255, 255, 0.05); }
+.nav-icon.active { color: #FAFAFA; background: rgba(255, 255, 255, 0.08); box-shadow: inset 2px 0 0 #EAB308; }
+.nav-icon.logout:hover { color: #EF4444; background: rgba(239, 68, 68, 0.1); }
+
+/* 2. MAIN VIEWPORT & LAYOUT */
+.unified-viewport {
+  flex: 1;
+  padding: 48px;
+  overflow-y: auto;
+}
+
+.settings-layout {
+  display: flex;
+  gap: 32px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* SUBNAV */
+.glass-subnav {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.subnav-title {
+  font-size: 11px;
+  color: #52525B;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  padding-left: 12px;
+}
+
+.glass-subnav button {
+  text-align: left;
+  background: transparent;
+  border: none;
+  color: #A1A1AA;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.glass-subnav button:hover {
+  color: #FAFAFA;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.glass-subnav button.active {
+  color: #FAFAFA;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* 3. THE GLASS VAULT */
+.glass-vault {
+  flex: 1;
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.8), inset 0 0 60px rgba(234, 179, 8, 0.02);
+}
+
+.pane-header {
+  margin-bottom: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 24px;
+}
+
+.pane-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+}
+
+.pane-header p {
+  color: #A1A1AA;
+  font-size: 14px;
+}
+
+/* SETTINGS SECTIONS */
+.glass-section {
+  margin-bottom: 40px;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #FAFAFA;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.section-title svg { color: #EAB308; }
+.section-desc { color: #A1A1AA; font-size: 14px; margin-bottom: 16px; }
+
+/* INPUTS */
+.input-group { display: flex; flex-direction: column; gap: 8px; }
+.input-group label { color: #A1A1AA; font-size: 12px; font-weight: 600; text-transform: uppercase; }
+.glass-input {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #FAFAFA;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+.glass-input.locked { color: #71717A; cursor: not-allowed; }
+.input-hint { color: #52525B; font-size: 12px; }
+
+/* BUTTONS */
+.glass-btn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #FAFAFA;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.glass-btn:hover { background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.2); }
+.glass-btn.highlight { background: #FAFAFA; color: #000; border: none; }
+.glass-btn.highlight:hover { background: #E4E4E7; }
+
+/* BILLING & USAGE */
+.billing-status-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 24px;
+  border-radius: 12px;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+.status-badge.pro { background: rgba(234, 179, 8, 0.1); color: #EAB308; border: 1px solid rgba(234, 179, 8, 0.3); }
+.status-badge.free { background: rgba(255, 255, 255, 0.05); color: #A1A1AA; border: 1px solid rgba(255, 255, 255, 0.1); }
+.status-info p { color: #A1A1AA; font-size: 13px; }
+
+.usage-text { color: #FAFAFA; font-size: 14px; margin-bottom: 12px; font-weight: 500; }
+.glass-progress-track { width: 100%; height: 6px; background: rgba(255, 255, 255, 0.05); border-radius: 4px; overflow: hidden; }
+.glass-progress-fill { height: 100%; background: #EAB308; border-radius: 4px; box-shadow: 0 0 10px rgba(234, 179, 8, 0.5); }
+
+/* DANGER ZONE */
+.danger-zone { border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 40px; }
+.section-title.danger svg { color: #EF4444; }
+.danger-btn { color: #EF4444; border-color: rgba(239, 68, 68, 0.3); }
+.danger-btn:hover { background: rgba(239, 68, 68, 0.1); border-color: #EF4444; }
+
+/* OVERLAYS & TOASTS */
+.glass-toast {
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  background: rgba(10, 10, 10, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid #EAB308;
+  color: #EAB308;
+  padding: 16px 24px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  font-size: 13px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(234, 179, 8, 0.1);
+  z-index: 100;
+}
+
+.glass-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.glass-modal-card {
+  background: rgba(15, 15, 15, 0.8);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  padding: 40px;
+  border-radius: 16px;
+  max-width: 440px;
+  width: 100%;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.9), inset 0 0 40px rgba(239, 68, 68, 0.05);
+}
+
+.modal-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.modal-header h2 { color: #FAFAFA; font-size: 20px; font-weight: 700; }
+.glass-modal-card p { color: #A1A1AA; font-size: 14px; line-height: 1.6; margin-bottom: 32px; }
+
+.modal-actions { display: flex; gap: 12px; justify-content: flex-end; }
+.glass-btn.cancel { border: none; }
+.glass-btn.cancel:hover { background: rgba(255, 255, 255, 0.05); }
+.glass-btn.confirm-danger { background: #EF4444; color: #fff; border: none; }
+.glass-btn.confirm-danger:hover { background: #DC2626; box-shadow: 0 0 20px rgba(239, 68, 68, 0.4); }
+
+.fade-in { animation: cinematicFadeIn 0.4s ease-out forwards; }
+@keyframes cinematicFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes spin { to { transform: rotate(360deg); } }

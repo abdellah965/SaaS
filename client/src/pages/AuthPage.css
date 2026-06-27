@@ -1,0 +1,257 @@
+/* --- ELITE AUTHENTICATION STYLES --- */
+.elite-auth-layout {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 24px;
+}
+
+/* Subtle Back Button */
+.auth-back-link {
+  position: absolute;
+  top: 40px;
+  left: 48px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #A1A1AA;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.2s;
+}
+
+.auth-back-link:hover {
+  color: #FAFAFA;
+}
+
+/* 1. THE GLASS VAULT */
+.glass-auth-wrapper {
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 48px 40px;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.8), inset 0 0 60px rgba(234, 179, 8, 0.03);
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  font-size: 14px;
+  color: #FAFAFA;
+}
+
+.auth-logo-box {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #EAB308, #D97706);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 16px rgba(234, 179, 8, 0.3);
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.auth-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: #FAFAFA;
+  margin-bottom: 8px;
+}
+
+.auth-header p {
+  color: #A1A1AA;
+  font-size: 14px;
+}
+
+/* 2. FORMS & INPUTS */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-group label {
+  color: #A1A1AA;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 14px;
+  color: #52525B;
+  transition: color 0.3s;
+}
+
+.input-wrapper input {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #FAFAFA;
+  padding: 14px 14px 14px 40px;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.input-wrapper input:focus {
+  border-color: #EAB308;
+  box-shadow: 0 0 0 1px rgba(234, 179, 8, 0.2);
+}
+
+.input-wrapper input:focus + .input-icon,
+.input-wrapper input:not(:placeholder-shown) + .input-icon {
+  color: #EAB308;
+}
+
+/* 3. SUBMIT BUTTON */
+.auth-submit-btn {
+  background: linear-gradient(to right, #D97706, #EAB308);
+  color: #000;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: all 0.3s ease;
+}
+
+.auth-submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(234, 179, 8, 0.3);
+}
+
+.btn-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-top-color: #000;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* 4. DIVIDER & GOOGLE AUTH */
+.auth-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 24px 0;
+  color: #52525B;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.auth-divider span {
+  padding: 0 16px;
+}
+
+.google-auth-btn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #FAFAFA;
+  padding: 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.google-auth-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(234, 179, 8, 0.4); /* Subtle amber border on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(234, 179, 8, 0.15); /* Soft, expensive glow */
+}
+
+.google-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* 5. FOOTER TOGGLE */
+.auth-footer {
+  margin-top: 32px;
+  text-align: center;
+  font-size: 14px;
+  color: #A1A1AA;
+}
+
+.auth-toggle {
+  background: transparent;
+  border: none;
+  color: #FAFAFA;
+  font-weight: 600;
+  margin-left: 8px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.auth-toggle:hover {
+  color: #EAB308;
+}
+
+.fade-in { animation: cinematicFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+@keyframes cinematicFadeIn {
+  from { opacity: 0; transform: translateY(15px) scale(0.98); filter: blur(4px); }
+  to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

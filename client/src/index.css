@@ -1,0 +1,27 @@
+/* --- LUXURY GLOBAL BASE & ATMOSPHERE --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #030303; /* Deeper than standard black */
+  color: #FAFAFA;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  /* The Cinematic Light Leaks */
+  background-image: 
+    radial-gradient(circle at 15% 0%, rgba(234, 179, 8, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 85% 100%, rgba(217, 119, 6, 0.05) 0%, transparent 40%);
+  background-attachment: fixed;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #27272A; }
+::-webkit-scrollbar-thumb:hover { background: #EAB308; }

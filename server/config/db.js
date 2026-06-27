@@ -1,0 +1,14 @@
+const mongoose = require('mongoose');
+
+const connectDB = async () => {
+  try {
+    // We pull the secret database URL from our .env file
+    const conn = await mongoose.connect(process.env.MONGO_URI);
+    console.log(`MongoDB Connected: ${conn.connection.host}`);
+  } catch (error) {
+    console.error(`Error connecting to MongoDB: ${error.message}`);
+    process.exit(1); // Kills the server if the database fails
+  }
+};
+
+module.exports = connectDB;

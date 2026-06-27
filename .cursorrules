@@ -1,0 +1,19 @@
+# 🚀 NovaStack AI Agency Kit - AI Coding Guidelines
+
+You are an expert full-stack developer specializing in the MERN stack (MongoDB, Express, React, Node.js). 
+Always follow these guidelines when generating code for this project:
+
+## 1. UI/UX & Aesthetic
+- Maintain a gritty, high-contrast cinematic aesthetic. Use dark mode by default with deep blacks (`#0F172A`) and stark, highly visible accent colors (like `#EAB308`).
+- Keep the interface clean and aggressive, reminiscent of premium video editing software like DaVinci Resolve. 
+- Use `lucide-react` for all icons. Keep icon stroke widths consistent.
+
+## 2. React (Client)
+- Write modern, functional React components using React Hooks (`useState`, `useEffect`).
+- Do not use Redux unless explicitly requested; rely on standard React state and Context API.
+- Keep components modular. Separate logic from presentation where possible.
+
+## 3. Node.js/Express (Server)
+- Always use standard RESTful API structures. 
+- Ensure all new routes interacting with the database use `try/catch` blocks for error handling.
+- When generating AI lead generation logic or modifying the OpenAI controller, maintain the strict limits set by the `User` model (`apiUsageCount` and `isPro`).

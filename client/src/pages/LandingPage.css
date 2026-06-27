@@ -1,0 +1,358 @@
+/* --- ELITE LANDING STYLES --- */
+.elite-landing {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
+}
+
+/* 1. FLOATING GLASS NAVBAR */
+.glass-nav {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 1200px;
+  height: 64px;
+  background: rgba(15, 15, 15, 0.4);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 32px;
+  z-index: 1000;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  font-size: 14px;
+}
+
+.nav-core-links {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .nav-core-links {
+    display: flex;
+    gap: 40px;
+  }
+}
+
+.nav-core-links a {
+  color: #A1A1AA;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.nav-core-links a:hover { color: #FAFAFA; }
+
+.nav-auth-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.login-text {
+  color: #A1A1AA;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.login-text:hover { color: #EAB308; }
+
+.nav-buy-btn {
+  background: transparent;
+  color: #EAB308;
+  border: 1px solid rgba(234, 179, 8, 0.4);
+  padding: 10px 24px;
+  border-radius: 100px;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.nav-buy-btn:hover {
+  background: #EAB308;
+  color: #000;
+  box-shadow: 0 0 20px rgba(234, 179, 8, 0.3);
+}
+
+/* 2. TYPOGRAPHY-DRIVEN HERO */
+.luxury-hero {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 800px;
+  padding: 0 24px;
+}
+
+.hero-eyebrow {
+  color: #EAB308;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  display: block;
+}
+
+.hero-headline {
+  font-size: clamp(48px, 7vw, 90px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -3px;
+  margin-bottom: 32px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #A1A1AA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtext {
+  color: #A1A1AA;
+  font-size: 18px;
+  line-height: 1.6;
+  max-width: 600px;
+  margin-bottom: 48px;
+  font-weight: 400;
+}
+
+.primary-cta {
+  background: linear-gradient(to right, #D97706, #EAB308);
+  color: #000;
+  padding: 16px 36px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.primary-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(234, 179, 8, 0.4);
+}
+
+/* 3. GLASSMORPHISM ARCHITECTURE */
+.tech-stack-section {
+  margin-top: 140px;
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 24px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.section-header h2 {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-bottom: 12px;
+}
+
+.section-header p {
+  color: #A1A1AA;
+  font-size: 16px;
+}
+
+.glass-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 32px;
+}
+
+.glass-card {
+  background: rgba(15, 15, 15, 0.5);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 40px 32px;
+  border-radius: 16px;
+  transition: all 0.4s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(234, 179, 8, 0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 0 40px rgba(234, 179, 8, 0.05);
+}
+
+.card-icon-wrapper {
+  color: #EAB308;
+  margin-bottom: 24px;
+}
+
+.glass-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.glass-card p {
+  color: #A1A1AA;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* 4. PRICING SECTION */
+.pricing-section {
+  margin-top: 140px;
+  margin-bottom: 140px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0 24px;
+}
+
+.pricing-card-glass {
+  background: rgba(15, 15, 15, 0.6);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(234, 179, 8, 0.2);
+  padding: 48px;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.8), inset 0 0 60px rgba(234, 179, 8, 0.05);
+}
+
+.pricing-header h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #EAB308;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.price-tag {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.currency { font-size: 24px; font-weight: 600; margin-top: 8px; }
+.amount { font-size: 64px; font-weight: 800; letter-spacing: -2px; line-height: 1; }
+
+.pricing-header p {
+  font-size: 14px;
+  color: #A1A1AA;
+  margin-bottom: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.pricing-features {
+  list-style: none;
+  text-align: left;
+  margin-bottom: 40px;
+}
+
+.pricing-features li {
+  font-size: 15px;
+  color: #FAFAFA;
+  margin-bottom: 16px;
+  padding-left: 24px;
+  position: relative;
+}
+
+.pricing-features li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #EAB308;
+  font-weight: 700;
+}
+
+.pricing-cta {
+  display: block;
+  width: 100%;
+  background: #FAFAFA;
+  color: #000000;
+  text-decoration: none;
+  padding: 16px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 15px;
+  transition: all 0.3s;
+}
+
+.pricing-cta:hover { background: #E4E4E7; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1); }
+
+/* 5. FOOTER */
+.luxury-footer {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: auto;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #A1A1AA;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-links a {
+  color: #A1A1AA;
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: #FAFAFA; }
+
+/* MOBILE RESPONSIVENESS FIXES */
+@media (max-width: 768px) {
+  .glass-nav { width: 95%; padding: 0 16px; }
+  .hero-headline { font-size: 48px; }
+  .glass-grid { grid-template-columns: 1fr; } 
+  .luxury-footer { flex-direction: column; gap: 20px; }
+  .nav-buy-btn { padding: 8px 12px; font-size: 10px; }
+  .primary-cta { padding: 12px 24px; font-size: 13px; }
+}

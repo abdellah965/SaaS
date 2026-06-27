@@ -1,0 +1,74 @@
+/* --- LUXURY SYSTEM & AUXILIARY PAGES --- */
+.system-layout {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  padding: 24px;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.system-glass-card {
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 64px 48px;
+  border-radius: 16px;
+  text-align: center;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.8), inset 0 0 60px rgba(234, 179, 8, 0.02);
+}
+
+.system-icon {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.system-glass-card h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: #FAFAFA;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+
+.system-glass-card p {
+  color: #A1A1AA;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.system-btn {
+  background: #FAFAFA;
+  color: #000;
+  text-decoration: none;
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  display: inline-flex;
+  transition: all 0.2s;
+}
+
+.system-btn:hover { background: #EAB308; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(234, 179, 8, 0.2); }
+
+/* DOCS SPECIFIC LAYOUT */
+.docs-viewport {
+  flex: 1;
+  padding: 64px;
+  overflow-y: auto;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.docs-header { margin-bottom: 48px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 24px; }
+.docs-header h1 { font-size: 36px; font-weight: 800; color: #FAFAFA; letter-spacing: -1px; }
+.docs-content h2 { font-size: 20px; color: #EAB308; margin-top: 40px; margin-bottom: 16px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+.docs-content p { color: #D4D4D8; line-height: 1.8; font-size: 15px; margin-bottom: 24px; }
+.docs-code { background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 16px; border-radius: 8px; font-family: monospace; color: #A1A1AA; margin-bottom: 24px; }
