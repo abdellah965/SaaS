@@ -3,310 +3,197 @@
   display: flex;
   height: 100vh;
   width: 100vw;
-  background-color: transparent; /* Allows index.css cinematic background to show */
+  background-color: #030303; 
   color: #FAFAFA;
   font-family: 'Inter', -apple-system, system-ui, sans-serif;
   overflow: hidden;
   position: relative;
 }
 
-.settings-loading-state {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100vw;
-}
+.settings-loading-state { display: flex; justify-content: center; align-items: center; height: 100vh; width: 100vw; }
+.glow-spinner { width: 32px; height: 32px; border: 2px solid rgba(255, 255, 255, 0.1); border-top-color: #EAB308; border-radius: 50%; animation: spin 0.8s linear infinite; }
 
-.glow-spinner {
-  width: 32px;
-  height: 32px;
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  border-top-color: #EAB308;
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-}
-
-/* 1. NARROW GLOBAL SIDEBAR (Exactly matches Dashboard.css) */
+/* ========================================= */
+/* 1. THE CURTAIN REVEAL SIDEBAR (Restored)  */
+/* ========================================= */
 .global-sidebar {
-  width: 64px;
-  background-color: rgba(10, 10, 10, 0.8);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-right: 1px solid rgba(255, 255, 255, 0.08);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 0;
-  z-index: 50;
+  width: 80px; 
+  height: 100vh;
+  background-color: #0A0A0A;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  z-index: 500;
+  overflow: hidden; 
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.sidebar-top, .sidebar-bottom {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  align-items: center;
+.global-sidebar:hover { width: 260px; box-shadow: 20px 0 40px rgba(0, 0, 0, 0.8); }
+
+.sidebar-inner {
+  width: 260px; height: 100%; display: flex; flex-direction: column; justify-content: space-between; padding: 24px 0; 
+}
+
+.sidebar-top, .sidebar-bottom { display: flex; flex-direction: column; width: 100%; }
+
+.sidebar-brand-row {
+  display: flex; align-items: flex-start; height: 32px; padding: 0 24px !important; margin-bottom: 32px; width: 260px; flex-shrink: 0;
 }
 
 .logo-box {
-  width: 32px;
-  height: 32px;
-  background: linear-gradient(135deg, #EAB308, #D97706);
-  border-radius: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 16px;
-  box-shadow: 0 4px 12px rgba(234, 179, 8, 0.3);
+  width: 32px; height: 32px; background: linear-gradient(135deg, #FACC15 0%, #B45309 100%);
+  border-radius: 8px; display: flex; justify-content: center; align-items: center; flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 16px rgba(217, 119, 6, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.5), inset 0 -1px 2px rgba(0, 0, 0, 0.2); 
 }
+.logo-box svg { color: #050505 !important; }
+
+.brand-label {
+  margin-left: 16px !important; font-weight: 900; font-size: 12px; letter-spacing: 3.5px; 
+  transform: translateY(10px); 
+  background: linear-gradient(180deg, #FFFFFF 0%, #8b8b93 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  line-height: 1; white-space: nowrap; opacity: 0; transition: opacity 0.4s ease; display: block; 
+}
+
+.global-sidebar:hover .brand-label { opacity: 1; } 
+
+.nav-menu { display: flex !important; flex-direction: column !important; gap: 8px !important; width: 260px !important; }
 
 .nav-icon {
-  width: 40px;
-  height: 40px;
-  background: transparent;
-  border: none;
-  color: #52525B;
-  border-radius: 8px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.2s;
+  width: 236px !important; margin: 0 12px !important; height: 48px !important;
+  display: flex !important; flex-direction: row !important; align-items: center !important; justify-content: flex-start !important;
+  padding: 0 0 0 12px !important; background: transparent; border: none !important; color: #71717A; cursor: pointer;
+  border-radius: 8px !important; transition: background 0.2s ease, color 0.2s ease; position: relative !important; flex-shrink: 0 !important; box-sizing: border-box !important;
 }
 
-.nav-icon:hover { color: #FAFAFA; background: rgba(255, 255, 255, 0.05); }
-.nav-icon.active { color: #FAFAFA; background: rgba(255, 255, 255, 0.08); box-shadow: inset 2px 0 0 #EAB308; }
-.nav-icon.logout:hover { color: #EF4444; background: rgba(239, 68, 68, 0.1); }
+.icon-wrapper { width: 32px !important; height: 32px !important; display: flex !important; align-items: center !important; justify-content: center !important; flex-shrink: 0 !important; margin: 0 !important; padding: 0 !important; position: static !important; }
+.icon-svg { width: 20px !important; height: 20px !important; flex-shrink: 0 !important; position: static !important; margin: 0 !important; }
 
-/* 2. MAIN VIEWPORT & LAYOUT */
-.unified-viewport {
-  flex: 1;
-  padding: 48px;
-  overflow-y: auto;
-}
+.nav-label { margin-left: 16px !important; font-weight: 500; font-size: 14px; white-space: nowrap !important; opacity: 0; transition: opacity 0.3s ease; position: static !important; }
 
-.settings-layout {
-  display: flex;
-  gap: 32px;
-  max-width: 1000px;
-  margin: 0 auto;
-}
+.global-sidebar:hover .nav-label { opacity: 1; }
+.nav-icon:hover:not(.active) { color: #FAFAFA; background: rgba(255, 255, 255, 0.05); }
 
-/* SUBNAV */
-.glass-subnav {
-  width: 200px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
+.nav-icon.active { color: #FAFAFA !important; background: linear-gradient(90deg, rgba(234, 179, 8, 0.1) 0%, transparent 100%) !important; }
+.nav-icon.active .icon-svg { color: #EAB308 !important; }
+.nav-icon.active::before { content: ''; position: absolute; left: 0; top: 20%; height: 60%; width: 3px; border-radius: 4px; background: #EAB308; box-shadow: 0 0 10px rgba(234, 179, 8, 0.6); }
 
-.subnav-title {
-  font-size: 11px;
-  color: #52525B;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 700;
-  margin-bottom: 12px;
-  padding-left: 12px;
-}
+
+/* ========================================= */
+/* 2. MASTER-DETAIL LAYOUT                   */
+/* ========================================= */
+.unified-viewport { flex: 1; padding: 48px 64px; overflow-y: auto; }
+
+.settings-layout { display: flex; gap: 80px; max-width: 1100px; margin: 0 auto; align-items: flex-start; }
+
+/* Subnav (Restored Hover/Active Animations) */
+.glass-subnav { width: 220px; flex-shrink: 0; display: flex; flex-direction: column; gap: 4px; border-right: 1px solid rgba(255, 255, 255, 0.05); padding-right: 32px; height: fit-content; }
+.subnav-title { font-size: 11px; color: #52525B; text-transform: uppercase; letter-spacing: 1px; font-weight: 800; margin-bottom: 16px; padding-left: 12px; }
 
 .glass-subnav button {
-  text-align: left;
-  background: transparent;
-  border: none;
-  color: #A1A1AA;
-  padding: 10px 12px;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s;
+  text-align: left; background: transparent; border: none; color: #A1A1AA;
+  padding: 10px 12px; border-radius: 8px; font-size: 14px; font-weight: 500;
+  cursor: pointer; transition: all 0.2s; border-left: 2px solid transparent; 
+}
+.glass-subnav button:hover:not(.active) { color: #FAFAFA; background: rgba(255, 255, 255, 0.03); }
+.glass-subnav button.active { color: #EAB308; background: rgba(234, 179, 8, 0.05); border-left: 2px solid #EAB308; font-weight: 600; }
+
+/* The Clean "Boutiq" Vault */
+.glass-vault { flex: 1; display: flex; flex-direction: column; gap: 40px; max-width: 600px; }
+
+.pane-header { margin-bottom: 0; border-bottom: none; padding-bottom: 0; }
+.pane-header h2 { font-size: 32px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 8px; color: #FAFAFA; }
+.pane-header p { color: #A1A1AA; font-size: 15px; }
+
+/* ========================================= */
+/* 3. CLEAN SECTION STYLING (Boutiq Match)   */
+/* ========================================= */
+.settings-section {
+  display: flex; flex-direction: column; gap: 24px; padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.glass-subnav button:hover {
-  color: #FAFAFA;
-  background: rgba(255, 255, 255, 0.03);
-}
-
-.glass-subnav button.active {
-  color: #FAFAFA;
-  background: rgba(255, 255, 255, 0.08);
-}
-
-/* 3. THE GLASS VAULT */
-.glass-vault {
-  flex: 1;
-  background: rgba(10, 10, 10, 0.6);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  padding: 40px;
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.8), inset 0 0 60px rgba(234, 179, 8, 0.02);
-}
-
-.pane-header {
-  margin-bottom: 40px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding-bottom: 24px;
-}
-
-.pane-header h2 {
-  font-size: 24px;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  margin-bottom: 8px;
-}
-
-.pane-header p {
-  color: #A1A1AA;
-  font-size: 14px;
-}
-
-/* SETTINGS SECTIONS */
-.glass-section {
-  margin-bottom: 40px;
-}
-
-.section-title {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  font-weight: 600;
-  color: #FAFAFA;
-  margin-bottom: 16px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
+.section-title { display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 700; color: #FAFAFA; margin-bottom: 0; }
 .section-title svg { color: #EAB308; }
-.section-desc { color: #A1A1AA; font-size: 14px; margin-bottom: 16px; }
+.section-desc { color: #71717A; font-size: 14px; margin-top: -16px; }
 
-/* INPUTS */
-.input-group { display: flex; flex-direction: column; gap: 8px; }
-.input-group label { color: #A1A1AA; font-size: 12px; font-weight: 600; text-transform: uppercase; }
+/* Dark Surface Inputs */
+.input-group { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 400px; }
+.input-group label { color: #71717A; font-size: 13px; font-weight: 500; }
 .glass-input {
-  background: rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #FAFAFA;
-  padding: 12px 16px;
-  border-radius: 8px;
-  font-size: 14px;
+  background: #0A0A0A; border: 1px solid #27272A; color: #FAFAFA;
+  padding: 12px 16px; border-radius: 8px; font-size: 14px; transition: all 0.2s ease;
 }
-.glass-input.locked { color: #71717A; cursor: not-allowed; }
-.input-hint { color: #52525B; font-size: 12px; }
+.glass-input:focus { border-color: #EAB308; outline: none; }
+.glass-input.locked { color: #71717A; background: #050505; cursor: not-allowed; }
+.input-hint { color: #52525B; font-size: 12px; margin-top: 4px; }
 
-/* BUTTONS */
+/* Buttons */
 .glass-btn {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #FAFAFA;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 13px;
-  cursor: pointer;
-  transition: all 0.2s;
+  background: #EAB308; color: #000; padding: 10px 20px; border-radius: 8px;
+  font-weight: 600; font-size: 14px; border: none; cursor: pointer; transition: all 0.2s; width: fit-content;
 }
-.glass-btn:hover { background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.2); }
-.glass-btn.highlight { background: #FAFAFA; color: #000; border: none; }
-.glass-btn.highlight:hover { background: #E4E4E7; }
+.glass-btn:hover { background: #FACC15; }
 
-/* BILLING & USAGE */
-.billing-status-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 24px;
-  border-radius: 12px;
-}
-
-.status-badge {
-  display: inline-block;
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  margin-bottom: 8px;
-}
-.status-badge.pro { background: rgba(234, 179, 8, 0.1); color: #EAB308; border: 1px solid rgba(234, 179, 8, 0.3); }
+/* Billing Card */
+.billing-status-card { display: flex; justify-content: space-between; align-items: center; background: #0A0A0A; border: 1px solid #27272A; padding: 24px; border-radius: 12px; }
+.status-badge { display: inline-block; padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 800; letter-spacing: 1px; margin-bottom: 8px; }
 .status-badge.free { background: rgba(255, 255, 255, 0.05); color: #A1A1AA; border: 1px solid rgba(255, 255, 255, 0.1); }
-.status-info p { color: #A1A1AA; font-size: 13px; }
+.status-info p { color: #A1A1AA; font-size: 13px; margin: 0; }
 
-.usage-text { color: #FAFAFA; font-size: 14px; margin-bottom: 12px; font-weight: 500; }
-.glass-progress-track { width: 100%; height: 6px; background: rgba(255, 255, 255, 0.05); border-radius: 4px; overflow: hidden; }
-.glass-progress-fill { height: 100%; background: #EAB308; border-radius: 4px; box-shadow: 0 0 10px rgba(234, 179, 8, 0.5); }
-
-/* DANGER ZONE */
-.danger-zone { border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 40px; }
+/* Danger Zone */
+.settings-section.danger-zone { border-bottom: none; }
+.section-title.danger { color: #EF4444; }
 .section-title.danger svg { color: #EF4444; }
-.danger-btn { color: #EF4444; border-color: rgba(239, 68, 68, 0.3); }
-.danger-btn:hover { background: rgba(239, 68, 68, 0.1); border-color: #EF4444; }
+.danger-btn { background: transparent; border: 1px solid #EF4444; color: #EF4444; }
+.danger-btn:hover { background: #EF4444; color: white; }
 
-/* OVERLAYS & TOASTS */
+/* ========================================= */
+/* 4. OVERLAYS & TOASTS (Restored Gold!)     */
+/* ========================================= */
 .glass-toast {
-  position: absolute;
-  top: 32px;
-  right: 32px;
-  background: rgba(10, 10, 10, 0.9);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid #EAB308;
-  color: #EAB308;
-  padding: 16px 24px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-weight: 600;
-  font-size: 13px;
+  position: absolute; top: 32px; right: 32px;
+  background: rgba(10, 10, 10, 0.9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border: 1px solid #EAB308; color: #EAB308;
+  padding: 16px 24px; border-radius: 8px; display: flex; align-items: center; gap: 12px;
+  font-weight: 600; font-size: 13px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(234, 179, 8, 0.1);
-  z-index: 100;
+  z-index: 3000;
 }
 
-.glass-modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.glass-modal-card {
-  background: rgba(15, 15, 15, 0.8);
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  padding: 40px;
-  border-radius: 16px;
-  max-width: 440px;
-  width: 100%;
-  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.9), inset 0 0 40px rgba(239, 68, 68, 0.05);
-}
-
+.glass-modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0, 0, 0, 0.8); backdrop-filter: blur(12px); display: flex; justify-content: center; align-items: center; z-index: 3000; }
+.glass-modal-card { background: rgba(15, 15, 15, 0.8); border: 1px solid rgba(239, 68, 68, 0.3); padding: 40px; border-radius: 16px; max-width: 440px; width: 100%; box-shadow: 0 40px 80px rgba(0, 0, 0, 0.9), inset 0 0 40px rgba(239, 68, 68, 0.05); }
 .modal-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-.modal-header h2 { color: #FAFAFA; font-size: 20px; font-weight: 700; }
-.glass-modal-card p { color: #A1A1AA; font-size: 14px; line-height: 1.6; margin-bottom: 32px; }
-
+.modal-header h2 { color: #FAFAFA; font-size: 20px; font-weight: 700; margin: 0; }
+.glass-modal-card p { color: #A1A1AA; font-size: 14px; line-height: 1.6; margin-bottom: 32px; margin-top: 0; }
 .modal-actions { display: flex; gap: 12px; justify-content: flex-end; }
-.glass-btn.cancel { border: none; }
+.glass-btn.cancel { background: transparent; border: none; color: #FAFAFA; }
 .glass-btn.cancel:hover { background: rgba(255, 255, 255, 0.05); }
 .glass-btn.confirm-danger { background: #EF4444; color: #fff; border: none; }
 .glass-btn.confirm-danger:hover { background: #DC2626; box-shadow: 0 0 20px rgba(239, 68, 68, 0.4); }
 
 .fade-in { animation: cinematicFadeIn 0.4s ease-out forwards; }
-@keyframes cinematicFadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes cinematicFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ========================================= */
+/* 5. MOBILE (Bug-Free Solid Overlay)        */
+/* ========================================= */
+.mobile-top-nav, .mobile-overlay, .mobile-close-btn { display: none; }
+
+@media (max-width: 768px) {
+  .unified-app-container { flex-direction: column; }
+  .mobile-top-nav { display: flex; justify-content: space-between; align-items: center; height: 64px; padding: 0 24px; background: #0A0A0A; border-bottom: 1px solid rgba(255, 255, 255, 0.05); flex-shrink: 0; }
+  .mobile-brand { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 14px; letter-spacing: 1px; color: #FAFAFA; }
+  .mobile-hamburger { background: transparent; border: none; color: #FAFAFA; cursor: pointer; display: flex; align-items: center; }
+
+  .global-sidebar { position: fixed; top: 0; left: -300px; width: 280px; height: 100vh; z-index: 2000; background-color: #0A0A0A; transition: left 0.3s ease; box-shadow: 20px 0 40px rgba(0,0,0,0.9); }
+  .global-sidebar.mobile-open { left: 0; }
+  .nav-label, .brand-label { opacity: 1; }
+  .sidebar-inner { width: 280px; }
+  .nav-icon { width: 232px !important; }
+  .mobile-close-btn { display: flex; align-items: center; justify-content: center; position: absolute; top: 24px; right: 20px; color: #A1A1AA; cursor: pointer; background: rgba(255,255,255,0.05); border-radius: 8px; width: 32px; height: 32px; z-index: 2100; }
+  
+  .mobile-overlay { display: block; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.85); z-index: 1500; }
+  
+  .unified-viewport { padding: 24px 16px; }
+  .settings-layout { flex-direction: column; gap: 40px; }
+  .glass-subnav { width: 100%; border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-right: 0; padding-bottom: 24px; }
 }
-@keyframes spin { to { transform: rotate(360deg); } }
